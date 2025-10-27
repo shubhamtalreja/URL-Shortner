@@ -6,22 +6,18 @@ const createShortUrl = async (req, res) => {
         return res.status(400).json({ error: 'Long URL is required' });
     }
 
-    const shortUrl = 'short.ly/' + Math.random().toString(36).substring(7);
+    const shortCode = Math.random().toString(36).substring(7);
 
     const saveUrl = await urlModel.create({
         originalUrl: longUrl,
-        shortUrl: shortUrl
+        shortId: shortCode
     });
-    res.status(201).json({ shortUrl: saveUrl.shortUrl });
+    res.status(201).json({ shortUrl: `${process.env.URL_DOMAIN}/${shortCode}` });
 };
 
 const getRedirectUrl = async (req, res) => {
-    const { shortUrl } = req.body;
-    if (!shortUrl) {
-        return res.status(400).json({ error: 'Short URL is required' });
-    }
 
-    const urlEntry = await urlModel.findOne({ shortUrl });
+    const urlEntry = await urlModel.findOne( {shortId: req.params.id} );
     if (!urlEntry) {
         return res.status(404).json({ error: 'Short URL not found' });
     }
