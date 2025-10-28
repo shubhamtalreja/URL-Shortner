@@ -1,45 +1,69 @@
 import React from 'react'
 import { useState } from 'react'
 import ENV_CONFIG from '../config/ENV_CONFIG';
+import FullScreenLoader from './FullScreenLoader';
+import './HomePage.css'
 
 const HomePage = () => {
     const [urlInput, setUrlInput] = useState();
     const [shortUrl, setShortUrl] = useState();
+    const [loading, setLoading] = useState();
 
-    const handleLongUrl = async() =>{
-        const urlBody = {
-            longUrl: urlInput
+    const handleLongUrl = async () => {
+        setLoading(true);
+        try {
+            const urlBody = {
+                longUrl: urlInput
+            }
+            const shortUrl = await fetch(`${ENV_CONFIG.BASE_URL}/create`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(urlBody)
+            });
+            const response = await shortUrl.json();
+            setShortUrl(response.shortUrl);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
         }
-        const shortUrl = await fetch(`${ENV_CONFIG.BASE_URL}/create`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(urlBody)
-        });
-        const response = await shortUrl.json();
-        setShortUrl(response.shortUrl);
+
     }
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
-            <h1>URL - SHORTNER</h1>
+        <>
+            {loading && <FullScreenLoader message="Generating short link..." />}
+            <div className="url-container">
+                <h1>URL - SHORTENER</h1>
 
-            <input
-                style={{height:'2rem', width: '30rem'}}
-                value={urlInput}
-                max={100}
-                onChange={(e) => {setUrlInput(e.target.value); setShortUrl('')}} 
-                placeholder='Enter URL'/>
-            <button style={{height:'2rem', width:'10rem', marginTop:'10px'}} onClick={handleLongUrl}>Short-URL</button>
-            {shortUrl &&
-                <div>
-                    <input
-                        style={{ height: '2rem', width: '30rem', marginTop: '10px' }}
-                        value={shortUrl}
-                        readOnly />
-                </div>
-            }
-        </div>
+                <input
+                    className="url-input"
+                    value={urlInput}
+                    maxLength={100}
+                    onChange={(e) => {
+                        setUrlInput(e.target.value);
+                        setShortUrl("");
+                    }}
+                    placeholder="Enter URL"
+                />
+
+                <button className="url-button" onClick={handleLongUrl}>
+                    Shorten URL
+                </button>
+
+                {shortUrl && (
+                    <div>
+                        <input
+                            className="url-result"
+                            value={shortUrl}
+                            readOnly
+                        />
+                    </div>
+                )}
+            </div>
+
+        </>
     )
 }
 
