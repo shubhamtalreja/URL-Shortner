@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="256" height="256">
+  <rect x="16" y="16" width="480" height="480" rx="48" fill="#ffffff"/>
+  <rect x="48" y="48" width="416" height="416" rx="32" fill="#0f172a"/>
+  <g transform="translate(120,170)">
+    <path d="M36 12c-20 0-36 16-36 36s16 36 36 36h36" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M72 84c20 0 36-16 36-36s-16-36-36-36H36" fill="none" stroke="#60a5fa" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(240,170) scale(1)">
+    <path d="M36 12c-20 0-36 16-36 36s16 36 36 36h36" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity="0.15"/>
+    <path d="M72 84c20 0 36-16 36-36s-16-36-36-36H36" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+  </g>
+  <g transform="translate(160,290)">
+    <rect x="0" y="0" width="192" height="64" rx="12" fill="#f8fafc"/>
+    <text x="96" y="42" font-family="Inter, Arial, sans-serif" font-size="28" fill="#0f172a" font-weight="700" text-anchor="middle">SHORT</text>
+    <path d="M150 18 L174 32 L150 46" fill="none" stroke="#0f172a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M120 32 L172 32" fill="none" stroke="#0f172a" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <circle cx="420" cy="100" r="18" fill="#f97316" opacity="0.95"/>
+  <path d="M412 96 L428 112 M412 112 L428 96" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+</svg>
