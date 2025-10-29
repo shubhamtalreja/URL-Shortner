@@ -1,4 +1,5 @@
 const urlModel = require("../models/url.model");
+const crypto = require("crypto");
 
 const createShortUrl = async (req, res) => {
     const { longUrl } = req.body;
@@ -12,7 +13,7 @@ const createShortUrl = async (req, res) => {
         return res.status(400).json({ error: "Invalid URL format" });
     }
 
-    const shortCode = Math.random().toString(36).substring(7);
+    const shortCode = crypto.randomBytes(4).toString("hex");
 
     try {
         const saveUrl = await urlModel.create({
