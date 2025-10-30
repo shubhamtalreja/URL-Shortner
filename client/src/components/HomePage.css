@@ -40,6 +40,21 @@
   box-shadow: 0 0 6px rgba(58, 139, 255, 0.5);
 }
 
+.copy-button {
+  margin-top: 14px;
+  height: 1.5rem;
+  /* width: 100%; */
+  /* max-width: 180px; */
+  background-color: #3a8bff;
+  color: #fff;
+  /* font-size: 1rem; */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
 /* Button */
 .url-button {
   margin-top: 14px;
@@ -67,6 +82,7 @@
   background-color: #2d2d2d;
   border: 1.5px solid #3a8bff;
   color: #cce0ff;
+  width: 100%;
 }
 
 /* Responsive */
