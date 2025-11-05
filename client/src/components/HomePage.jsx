@@ -9,9 +9,11 @@ const HomePage = () => {
     const [shortUrl, setShortUrl] = useState();
     const [loading, setLoading] = useState();
     const [copied, setCopied] = useState(false);
+    const [Error, setError] = useState();
 
     const handleLongUrl = async () => {
         setLoading(true);
+        setError(null);
         try {
             const urlBody = {
                 longUrl: urlInput
@@ -26,6 +28,7 @@ const HomePage = () => {
             const response = await shortUrl.json();
             setShortUrl(response.shortUrl);
         } catch (error) {
+            setError("Failed to generate short URL. Please try again.");
             console.log(error);
         } finally {
             setLoading(false);
@@ -59,6 +62,7 @@ const HomePage = () => {
                 <button className="url-button" onClick={handleLongUrl}>
                     Shorten URL
                 </button>
+                {Error && <p className="error-message">{Error}</p>}
 
                 {shortUrl && (
                     <div>

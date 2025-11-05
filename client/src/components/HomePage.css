@@ -100,3 +100,10 @@
     font-size: 1.6rem;
   }
 }
+
+.error-message {
+  margin-top: 10px;
+  color: #ff4d4d;
+  font-weight: 500;
+  animation: fadeIn 0.5s ease-in-out;
+}
