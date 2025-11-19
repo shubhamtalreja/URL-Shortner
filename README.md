@@ -35,7 +35,7 @@ npm run dev
 
 Notes:
 - The frontend runs (by default) on Vite's dev server (typically http://localhost:5173).
-- The backend is configured to run on port 3000 by default.
+- The backend is configured to run on port 8000 by default.
 
 ## Environment Variables
 
@@ -107,17 +107,11 @@ Adjust paths if your server prefix differs. Check `server/routes/url.routes.js` 
 - The frontend uses Vite — environment variables that start with `VITE_` are exposed to client code.
 - The backend uses Mongoose to connect to MongoDB — ensure your `MONGO_URI` is reachable.
 
-## Troubleshooting
+## Screenshot
 
-- Port conflicts: change `PORT` in `server/.env`.
-- DB connection failures: make sure MongoDB is running and the URI is correct.
-- CORS issues: `CLIENT_URL` exists so the server can whitelist the frontend origin — ensure it matches where you serve the client.
+Below is a screenshot of the URL creation / listing page from the client UI:
 
-## License
+![URL Page](client/src/assets/url-page.PNG)
 
-This project is provided as-is. Add a license file if you need one (e.g., MIT).
 
-## Acknowledgements
-
-Built as a small MERN demo app for learning and quick URL-shortening functionality.
 
